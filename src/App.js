@@ -1,16 +1,11 @@
 import React from "react";
-import useTitle from "./hooks/useTitle";
+import useClick from "./hooks/useClick";
 
 function App() {
-  const setTitle = useTitle("Loading...");
+  const title = useClick(() => console.log("click"));
   return (
     <div>
-      <input
-        type="text"
-        onChange={e => {
-          setTitle(e.target.value);
-        }}
-      />
+      <h1 ref={title}>Hi</h1>
     </div>
   );
 }
