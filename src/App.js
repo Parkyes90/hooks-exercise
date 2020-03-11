@@ -1,11 +1,17 @@
 import React from "react";
-import useClick from "./hooks/useClick";
+import useConfirm from "./hooks/useConfirm";
+import usePreventLeave from "./hooks/usePreventLeave";
 
 function App() {
-  const title = useClick(() => console.log("click"));
+  const delAction = () => console.log("Del");
+  const abort = () => console.log("abort");
+  const confirmDel = useConfirm("Are you sure?", delAction, abort);
+  const { protect, unprotect } = usePreventLeave();
   return (
     <div>
-      <h1 ref={title}>Hi</h1>
+      <button onClick={confirmDel}>Del</button>
+      <button onClick={protect}>Protect</button>
+      <button onClick={unprotect}>Unprotect</button>
     </div>
   );
 }
