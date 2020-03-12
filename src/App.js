@@ -1,12 +1,11 @@
 import React from "react";
-import useFullscreen from "./hooks/useFullscreen";
-import bg from "./assets/img/harley-davidson-aiBYhrzsQw4-unsplash.jpg";
+import useNotification from "./hooks/useNotification";
 
 function App() {
-  const { element, toggleFull } = useFullscreen();
+  const fireNotification = useNotification("test", { body: "I Love Kimchi" });
   return (
     <div style={{ height: "1000vh" }}>
-      <img src={bg} alt="ride bicycle" ref={element} onClick={toggleFull} />
+      <button onClick={fireNotification}>Notification</button>
     </div>
   );
 }
